@@ -1,10 +1,6 @@
 package id.akademi.amanifo.login.controllers;
 
-import id.akademi.amanifo.login.controllers.models.LoginRequest;
-import id.akademi.amanifo.login.controllers.models.LoginResponse;
-import id.akademi.amanifo.login.services.IMemberLogin;
-import id.akademi.amanifo.login.services.models.MemberLoginParameter;
-import lombok.RequiredArgsConstructor;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.support.BindingAwareModelMap;
@@ -14,9 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClientException;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.servlet.http.HttpSession;
+import id.akademi.amanifo.login.controllers.models.LoginRequest;
+import id.akademi.amanifo.login.controllers.models.LoginResponse;
+import id.akademi.amanifo.login.services.IMemberLogin;
+import id.akademi.amanifo.login.services.models.MemberLoginParameter;
+import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
