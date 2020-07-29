@@ -17,8 +17,8 @@ public class RestTemplateConfig
     @Bean
     public RestTemplate restTempalateConfig(){
         return new RestTemplateBuilder()
-                    .setReadTimeout(Duration.ofSeconds(3))
-                    .setConnectTimeout(Duration.ofSeconds(5))
+                    .setReadTimeout(Duration.ofSeconds(300))
+                    .setConnectTimeout(Duration.ofSeconds(3))
                     .requestFactory(()->createCloseableClientHttpRequestFactory())
                     .build();
     };

@@ -1,15 +1,32 @@
 $(function() {    
-    const meetConfig = {
-        apiKey: 'ijEid1B3R5WA0Nfo3wghqw',
-        meetingNumber: '6420593127',
-        leaveUrl: 'https://google.com',
-        userName: 'Cena Lagi Test',
-        userEmail: 'cena.test@oi.com', // required for webinar
-        role: 0 // 1 for host; 0 for attendee or webinar
-    };
-        
     console.log("Starting Course ..............................................");
-    ZoomMtg.setZoomJSLib('https://dmogdx0jrul3u.cloudfront.net/1.7.9/lib', '/av');
+    ZoomMtg.setZoomJSLib('/js/node_modules/@zoomus/websdk/dist/lib', '/av');
     ZoomMtg.preLoadWasm();
     ZoomMtg.prepareJssdk();
+    ZoomMtg.init({
+        leaveUrl:meetingConfig.leaveUrl,
+        isSupportAV: true,
+        success: (success) => {
+            console.log(success)
+
+            ZoomMtg.join({
+                meetingNumber:meetingConfig.meetingNumber,
+                signature:meetingConfig.signature,
+                passWord: meetingConfig.password,
+                apiKey:meetingConfig.apiKey,
+                userName:"Cena Coba2",
+                userEmail:"cena.test@oi.com",
+                success: (success) => {
+                    console.log(success)
+                },
+                error: (error) => {
+                    console.log(error)
+                }
+            })
+
+        },
+        error: (error) => {
+            console.log(error)
+        }
+    })
 })
