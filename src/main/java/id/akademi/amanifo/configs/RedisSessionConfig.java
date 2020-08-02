@@ -16,7 +16,8 @@ public class RedisSessionConfig
     private final RedisConnectionFactory redisConnectionFactory;
 
     @Bean
-    public RedisOperations<String, Object> sessionRedisOperations() {
+    public RedisOperations<String, Object> sessionRedisOperations()
+    {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(this.redisConnectionFactory);
         redisTemplate.setKeySerializer(new StringRedisSerializer());

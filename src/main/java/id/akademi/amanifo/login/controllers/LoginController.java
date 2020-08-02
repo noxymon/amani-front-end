@@ -23,11 +23,13 @@ public class LoginController
     private final IMemberLogin memberLoginService;
 
     @GetMapping("/login")
-    public String showLogin(Model model, @RequestParam(required = false, defaultValue = "false") String isLoginFailed, String failedLoginMessage, boolean redirect)
+    public String showLogin(Model model,
+        @RequestParam(required = false, defaultValue = "false") String isLoginFailed,
+        String failedLoginMessage, boolean redirect)
     {
         model.addAttribute("loginRequest", new LoginRequest())
-             .addAttribute("isLoginFailed", Boolean.valueOf(isLoginFailed))
-             .addAttribute("failedLoginMessage", failedLoginMessage);
+            .addAttribute("isLoginFailed", Boolean.valueOf(isLoginFailed))
+            .addAttribute("failedLoginMessage", failedLoginMessage);
         return redirect ? "redirect:/login" : "login";
     }
 
@@ -37,9 +39,7 @@ public class LoginController
         try {
             MemberLoginParameter memberLoginParameter = buildMemberLoginParameter(loginRequest);
 
-            LoginResponse loginResponse = LoginResponse.from(
-                    memberLoginService.login(memberLoginParameter)
-            );
+            LoginResponse loginResponse = LoginResponse.from(memberLoginService.login(memberLoginParameter));
 
             httpSession.setAttribute("loginResponse", loginResponse);
             return "redirect:/home";
@@ -59,10 +59,8 @@ public class LoginController
     private MemberLoginParameter buildMemberLoginParameter(LoginRequest loginRequest)
     {
         return MemberLoginParameter.builder()
-                                   .email(loginRequest.getEmail())
-                                   .password(loginRequest.getPassword())
-                                   .build();
+            .email(loginRequest.getEmail())
+            .password(loginRequest.getPassword())
+            .build();
     }
-
-    ;
 }

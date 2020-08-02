@@ -19,11 +19,11 @@ public class LoginResponse implements Serializable
     public static LoginResponse from(MemberLoginResult memberLoginResult)
     {
         return LoginResponse.builder()
-        .id(memberLoginResult.getId())
-        .email(memberLoginResult.getEmail())
-        .firstName(memberLoginResult.getFirstName())
-        .lastName(memberLoginResult.getLastName())
-        .memberType(memberLoginResult.getMemberType())
-        .build();
+            .id(memberLoginResult.getId())
+            .email(memberLoginResult.getEmail())
+            .firstName(memberLoginResult.getFirstName())
+            .lastName(memberLoginResult.getLastName())
+            .memberType(memberLoginResult.getMemberType())
+            .build();
     };
 }

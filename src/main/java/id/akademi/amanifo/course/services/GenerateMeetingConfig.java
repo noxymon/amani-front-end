@@ -9,18 +9,23 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class GenerateMeetingConfig {
-    
+public class GenerateMeetingConfig
+{
+
     @Value("${api.course.signature.url}")
-    private String signatureGeneratorUrl;
+    private String             signatureGeneratorUrl;
 
     @Value("${apps.base-url}")
-    private String baseUrl;
-    
+    private String             baseUrl;
+
     private final RestTemplate restTemplate;
 
-    public MeetingConfig generate(String meetingNumber){
-        SignatureResponse generatedSignature = restTemplate.getForObject(signatureGeneratorUrl + "/" + meetingNumber, SignatureResponse.class);
+    public MeetingConfig generate(String meetingNumber)
+    {
+        SignatureResponse generatedSignature = restTemplate.getForObject(
+            signatureGeneratorUrl + "/" + meetingNumber,
+            SignatureResponse.class
+        );
         return MeetingConfig.builder()
                             .signature(generatedSignature.getSignature())
                             .password(generatedSignature.getPasscode())

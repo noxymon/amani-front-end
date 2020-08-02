@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Welcome Aboard :)</title>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,400;0,800;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+	<link type="text/css" th:rel="stylesheet" th:href="@{~/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+	<link rel="stylesheet" type="text/css" href="/css/my-login.css">
+</head>
+<body class="my-login-page">
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-md-center h-100">
+				<div class="card-wrapper">
+					<div class="brand">
+						<img src="/images/logo.png">
+					</div>
+					<div class="card fat">
+						<div class="card-body">
+							<h4 class="card-title">Welcome Aboard :)</h4>
+							<p>It’s great to have you with us! Let’s have a wonderful time learning together!</p>
+							<span>If not now to learn, When ? Click <a href="/login">here</a> to start</span>
+						</div>
+					</div>
+					<div class="footer">
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						&mdash; Amani Project
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script defer th:src="@{~/webjars/jquery/3.5.1/jquery.min.js}"></script>
+	<script defer th:src="@{~/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+</body>
+</html>

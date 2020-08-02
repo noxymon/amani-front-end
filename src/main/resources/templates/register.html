@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
-	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>My Login Page &mdash; Bootstrap 4 Login Page Snippet</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>Register - Amani Course</title>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,400;0,800;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+	<link type="text/css" th:rel="stylesheet" href="webjars/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link type="text/css" th:rel="stylesheet" href="webjars/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/my-login.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
 </head>
 <body class="my-login-page">
 	<section class="h-100">
@@ -14,15 +19,21 @@
 			<div class="row justify-content-md-center h-100">
 				<div class="card-wrapper">
 					<div class="brand">
-						<img src="img/logo.jpg" alt="bootstrap 4 login page">
+						<img src="images/logo.png">
 					</div>
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title">Register</h4>
-							<form method="POST" class="my-login-validation" novalidate="">
-								<div class="form-group">
-									<label for="name">Name</label>
-									<input id="name" type="text" class="form-control" name="name" required autofocus>
+							<form method="POST" th:action="@{/register}" th:object="${registerRequest}" class="my-login-validation" novalidate="">
+								<div class="form-group row">
+									<div class="col-md-6">
+										<label for="firstName">First Name</label>
+										<input id="first-name" type="text" class="form-control" name="firstName" required="" autofocus="">
+									</div>
+									<div class="col-md-6">
+										<label for="lastName">Last Name</label>
+										<input id="last-name" type="text" class="form-control" name="lastName" required="" autofocus="">
+									</div>
 									<div class="invalid-feedback">
 										What's your name?
 									</div>
@@ -35,6 +46,14 @@
 										Your email is invalid
 									</div>
 								</div>
+								
+								<div class="form-group">
+									<label for="dateOfBirth">Date of Birth</label>
+									<input id="dob" type="text" class="form-control datetimepicker-input" name="dateOfBirth" data-toggle="datetimepicker" data-target="#dob" required>
+									<div class="invalid-feedback">
+										Date of Birth is invalid
+									</div>
+								</div>
 
 								<div class="form-group">
 									<label for="password">Password</label>
@@ -44,37 +63,32 @@
 									</div>
 								</div>
 
-								<div class="form-group">
-									<div class="custom-checkbox custom-control">
-										<input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
-										<label for="agree" class="custom-control-label">I agree to the <a href="#">Terms and Conditions</a></label>
-										<div class="invalid-feedback">
-											You must agree with our Terms and Conditions
-										</div>
-									</div>
-								</div>
-
 								<div class="form-group m-0">
 									<button type="submit" class="btn btn-primary btn-block">
 										Register
 									</button>
 								</div>
 								<div class="mt-4 text-center">
-									Already have an account? <a href="index.html">Login</a>
+									Already have an account? <a href="/login">Login</a>
 								</div>
 							</form>
 						</div>
 					</div>
 					<div class="footer">
-						Copyright &copy; 2017 &mdash; Your Company 
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						&mdash; Amani Project
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script src="js/my-login.js"></script>
+	<script defer th:src="@{~/webjars/moment/2.27.0/min/moment.min.js}"></script>
+	<script defer th:src="@{~/webjars/jquery/3.5.1/jquery.min.js}"></script>
+	<script defer th:src="@{~/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+	<script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+	<script defer th:src="@{~/js/my-login.js}"></script>
 </body>
 </html>

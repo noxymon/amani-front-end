@@ -11,19 +11,20 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-public class RestTemplateConfig 
+public class RestTemplateConfig
 {
-    
+
     @Bean
-    public RestTemplate restTempalateConfig(){
-        return new RestTemplateBuilder()
-                    .setReadTimeout(Duration.ofSeconds(300))
-                    .setConnectTimeout(Duration.ofSeconds(3))
-                    .requestFactory(()->createCloseableClientHttpRequestFactory())
-                    .build();
+    public RestTemplate restTempalateConfig()
+    {
+        return new RestTemplateBuilder().setReadTimeout(Duration.ofSeconds(300))
+            .setConnectTimeout(Duration.ofSeconds(3))
+            .requestFactory(() -> createCloseableClientHttpRequestFactory())
+            .build();
     };
 
-    private ClientHttpRequestFactory createCloseableClientHttpRequestFactory() {
+    private ClientHttpRequestFactory createCloseableClientHttpRequestFactory()
+    {
         CloseableHttpClient closeableHttpClient = HttpClientBuilder.create().build();
         return new HttpComponentsClientHttpRequestFactory(closeableHttpClient);
     }

@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>My Login Page</title>
+        <title>Login - Amani Course</title>
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,400;0,800;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
         <link type="text/css" th:rel="stylesheet" href="webjars/bootstrap/4.5.0/css/bootstrap.min.css">
         <link type="text/css" th:rel="stylesheet" href="css/my-login.css">
     </head>
@@ -14,7 +18,7 @@
                 <div class="row justify-content-md-center h-100">
                     <div class="card-wrapper">
                         <div class="brand">
-                            <img src="images/logo.jpg" alt="logo">
+                            <img src="images/logo.png">
                         </div>
                         <div class="card fat">
                             <div class="card-body">
@@ -54,7 +58,7 @@
                                     </div>
                                     <div class="mt-4 text-center">
                                         Don't have an account?
-                                        <a href="register.html">Create One</a>
+                                        <a href="/register">Create One</a>
                                     </div>
                                 </form>
                             </div>
@@ -72,8 +76,7 @@
         </section>
 
         <script defer th:src="@{~/webjars/jquery/3.5.1/jquery.min.js}"></script>
-        <script defer th:src="@{~/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
-        <script defer th:src="@{~/webjars/popper.js/2.0.2/cjs/popper.js}" crossorigin="anonymous"></script>
+        <script defer th:src="@{~/webjars/bootstrap/4.5.0/js/bootstrap.bundle.min.js}"></script>
         <script defer th:src="@{~/js/my-login.js}"></script>
     </body>
 </html>
