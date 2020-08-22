@@ -38,4 +38,11 @@ public class FetchCoursesApi implements IFetchCourses
                                    .build()
                                    .toUri();
     }
+
+    @Override
+    public CourseResult byIdAndMember(String courseId, String memberId)
+    {
+        URI uri = buildUriWithPath("/" + courseId + "/" + memberId);
+        return restTemplate.getForObject(uri, CourseResult.class);
+    }
 }

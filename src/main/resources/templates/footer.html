@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 
 <body>
-    <footer class="py-5 bg-dark" th:fragment="footer">
+    <footer class="text-muted bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; <script async>document.write(new Date().getFullYear());</script>
+            <p class="text-white float-right">
+                <a href="#">Back to top</a>
+            </p>
+            <p class="m-0 text-center text-white">Copyright &copy;
+                <script async>document.write(new Date().getFullYear());</script>
                 &mdash; Amani Project.
             </p>
         </div>
     </footer>
 </body>
+
 </html>

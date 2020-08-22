@@ -20,7 +20,7 @@ public class GenerateMeetingConfig
 
     private final RestTemplate restTemplate;
 
-    public MeetingConfig generate(String meetingNumber)
+    public MeetingConfig generate(String meetingNumber, String username, String userEmail)
     {
         SignatureResponse generatedSignature = restTemplate.getForObject(
             signatureGeneratorUrl + "/" + meetingNumber,
@@ -31,7 +31,9 @@ public class GenerateMeetingConfig
                             .password(generatedSignature.getPasscode())
                             .apiKey(generatedSignature.getApiKey())
                             .role(generatedSignature.getRole())
-                            .leaveUrl("https://google.com")
+                            .leaveUrl(baseUrl)
+                            .username(username)
+                            .userEmail(userEmail)
                             .meetingNumber(meetingNumber)
                             .baseUrl(baseUrl)
                             .build();

@@ -12,11 +12,22 @@
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,400;0,800;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,400;0,800;1,400&display=swap"
+          rel="stylesheet" media="print" onload="this.media='all'">
+    <link th:href="@{~/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet">
     <link th:href="@{~/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{~/css/shop-item.css}" rel="stylesheet">
     <script defer th:src="@{~/webjars/jquery/3.5.1/jquery.min.js}"></script>
     <script defer th:src="@{~/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+    <script async th:inline="javascript">
+        /*
+        <![CDATA[*/
+        var loginResponse = /*[[${loginResponse}]]*/ '{}';
+        var courseResult = /*[[${courseResult}]]*/ '{}';
+        /*]]
+    */
+    </script>
+    <script defer th:src="@{~/js/course-detail.js}"></script>
 </head>
 
 <body>
@@ -26,21 +37,33 @@
         <div class="col-lg-3">
             <div class="card text-center mt-4">
                 <div class="card-header text-center">
-                    <h5 class="font-weight-bold" th:text="${#temporals.format(courseResult.getCourseStartDate(), 'MMMM dd, YYYY')}"></h5>
+                    <h5 class="font-weight-bold"
+                        th:text="${#temporals.format(courseResult.getCourseStartDate(), 'MMMM dd, YYYY')}"></h5>
                     <span th:text="${#temporals.format(courseResult.getCourseStartTime(), 'hh:mma')} + '-' + ${#temporals.format(courseResult.getCourseEndTime(), 'hh:mma')}"></span>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title" th:text="'Tersisa ' + ${courseResult.getCapacity()} + ' kursi lagi'"></h5>
-                    <a th:href="@{{id}/join(id=${id})}" class="btn btn-primary">Join Course</a>
+                    <h5 class="card-title"
+                        th:text="'Tersisa ' + ${courseResult.getCapacity() - courseResult.getRegisteredCount()} + ' kursi lagi'"></h5>
+                    <button id="btnJoinCourse" type="button" class="btn btn-block btn-lg btn-primary" th:if="${courseResult.isAlreadyJoined() == false}">Join Course</button>
+                    <button id="btnAlreadyJoined" class="btn btn-block btn-lg btn-success" th:if="${courseResult.isAlreadyJoined() == true}" disabled>
+                        <span class="fa fa-check" role="status" aria-hidden="true"></span>
+                        Terdaftar
+                    </button>
+                    <button id="btnJoinCourseLoading" class="btn btn-block btn-lg btn-primary" style="display: none" disabled>
+                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                        Loading ...
+                    </button>
                 </div>
                 <div class="card-footer text-muted">
-                    Ditutup 2 hari lagi
+                    Ditutup <span th:text="${courseResult.getDaysBeforeStartDate()}"></span> hari
+                    lagi
                 </div>
             </div>
         </div>
         <div class="col-lg-9">
             <div class="card mt-4">
-                <img class="card-img-top img-fluid" src="https://placehold.it/900x400" alt="">
+                <img class="card-img-top img-fluid" src="https://lorempixel.com/900/400/abstract"
+                     alt="">
                 <div class="card-body">
                     <h3 class="card-title" th:text="${courseResult.getCourseName()}"></h3>
                     <p class="card-text mt-4" th:utext="${courseResult.getCourseDescription()}"></p>
@@ -58,7 +81,7 @@
                             <p th:utext="${courseResult.getInstructorDescription()}"></p>
                         </div>
                         <div class="col-md-4">
-                            <img src="https://cdn.oreillystatic.com/authors/trim/prod/images/38986-200x200.jpg">
+                            <img src="https://lh3.googleusercontent.com/8nFFbolv0VrMYUfFbqGQHF7wh7tECq8zKlDLCOw2lIawBZeV_seaGuDDYis5nkKU0PVMQurgt5m6Kuo4xXvGMbY6gJcLeTSbTDbIC1c1b7rs1gjwuQbcvlbtc1BvBReErpar1_GJCQ=w200">
                         </div>
                     </div>
                 </div>
@@ -66,70 +89,17 @@
 
             <div class="card card-outline-secondary my-4">
                 <div class="card-header">
-                    Schedule
+                    Course Outline
                 </div>
                 <div class="card-body">
-                    <p><strong>Roadmap</strong> (5 minutes)</p>
-                    <ul>
-                        <li>Lecture: Explanation of course and purpose; course roadmap; why PowerPoint?; PowerPoint
-                            stigmas
-                            demystified; PowerPoint isn’t the problem—the presenter is; why PowerPoint should be three
-                            primary
-                            things—audience-focused, visually superior, and organized and consistent
-                        </li>
-                        <li>Group discussion: What negative things have you heard (or said) about PowerPoint? What are
-                            its
-                            stigmas? What types of presentations do you give in your profession? How do you use
-                            PowerPoint in those
-                            presentations?
-                        </li>
-                    </ul>
-                    <p><strong>Why visuals matter</strong> (5 minutes)</p>
-                    <ul>
-                        <li>Lecture: Engagement; recall; storytelling; the picture superiority effect; professionalism
-                        </li>
-                        <li>Poll: Do you feel confident designing visually rich information?</li>
-                        <li>Group discussion: What do you feel less confident in? What makes designing effective
-                            PowerPoint slides
-                            hard?
-                        </li>
-                    </ul>
-                    <p><strong>PowerPoint faux pas</strong> (10 minutes)</p>
-                    <ul>
-                        <li>Group discussion: What are your greatest PowerPoint pet peeves?</li>
-                        <li>Lecture: 40 ways to screw up a PowerPoint slide; other PowerPoint mishaps</li>
-                        <li>Q&amp;A</li>
-                    </ul>
-                    <p><strong>Design overview: Structure, relevancy, and CRAP</strong> (20 minutes)</p>
-                    <ul>
-                        <li>Lecture: The design trifecta—structure, relevancy, and CRAP; structure—beginning (title
-                            slide), middle
-                            (roadmap, sections, unique content, signposts), ending (the closing slide), footers and
-                            indicators;
-                            relevancy—audience needs, style (colors, typefaces, photography, cohesion), matching visuals
-                            to content
-                            (stories, numerical data, bullets), finding photos, finding icons; CRAP—contrast,
-                            repetition, alignment,
-                            proximity
-                        </li>
-                    </ul>
-                    <p><strong>Design specifics: Trips, tricks, and ideas</strong> (15 minutes)</p>
-                    <ul>
-                        <li>Lecture: Bleeds and margins; cutting up photos; transparent overlays; creative cues
-                            (brackets, etc.);
-                            block quotes; highlighting data (emphasizing chart info); the rule of thirds
-                        </li>
-                    </ul>
-                    <p><strong>Wrap-up and Q&amp;A</strong> (5 minutes)</p>
-
+                    <div th:utext="${courseResult.getCourseOutline()}"></div>
                 </div>
             </div>
         </div>
     </div>
-</div>eval
+</div>
 
 <div th:replace="footer"></div>
-
+<div th:replace="error-modal"></div>
 </body>
-
 </html>

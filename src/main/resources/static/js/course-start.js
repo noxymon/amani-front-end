@@ -14,8 +14,8 @@ $(function() {
                 signature:meetingConfig.signature,
                 passWord: meetingConfig.password,
                 apiKey:meetingConfig.apiKey,
-                userName:"Cena Coba2",
-                userEmail:"cena.test@oi.com",
+                userName:meetingConfig.username,
+                userEmail:meetingConfig.userEmail,
                 success: (success) => {
                     console.log(success)
                 },

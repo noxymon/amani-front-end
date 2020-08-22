@@ -7,4 +7,5 @@ public interface IFetchCourses
 {
     CourseResultList all();
     CourseResult byId(String id);
+    CourseResult byIdAndMember(String courseId, String memberId);
 }
