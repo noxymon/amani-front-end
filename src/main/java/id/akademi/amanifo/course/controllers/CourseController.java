@@ -26,12 +26,25 @@ public class CourseController {
         
         if(Objects.isNull(loginResponse)){
             CourseResult courseDetailWithoutLogin = fetchCourses.byId(id);
-            model.addAttribute("courseResult", courseDetailWithoutLogin);
+            CourseResult courseDetailWithFlagOpen = flagCourseOpenForRegistration(courseDetailWithoutLogin);
+
+            model.addAttribute("courseResult", courseDetailWithFlagOpen);
         }else{
             CourseResult courseDetailWithSession = fetchCourses.byIdAndMember(id, loginResponse.getId());
-            model.addAttribute("courseResult", courseDetailWithSession);
+            CourseResult courseDetailWithFlagOpen = flagCourseOpenForRegistration(courseDetailWithSession);
+            
+            model.addAttribute("courseResult", courseDetailWithFlagOpen);
             model.addAttribute("loginResponse", loginResponse);
         }
         return "course-detail";
+    };
+
+    private CourseResult flagCourseOpenForRegistration(CourseResult existing){
+        if(existing.getDaysBeforeStartDate() > 0 && !existing.isAlreadyJoined()){
+            CourseResult newCourseResult = new CourseResult(existing);
+            newCourseResult.setOpenForRegistration(true);
+            return newCourseResult;
+        }
+        return existing;
     };
 }
