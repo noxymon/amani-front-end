@@ -1,12 +1,10 @@
 package id.akademi.amanifo.home.services.models;
 
-import id.akademi.amanifo.course.services.models.CourseResult;
-import id.akademi.amanifo.course.services.models.CourseResultList;
-import lombok.Builder;
-import lombok.Getter;
-
 import java.util.Collections;
 import java.util.List;
+import id.akademi.amanifo.course.services.models.CourseResult;
+import lombok.Builder;
+import lombok.Getter;
 
 @Getter
 @Builder

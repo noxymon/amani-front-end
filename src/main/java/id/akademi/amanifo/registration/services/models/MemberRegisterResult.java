@@ -1,7 +1,5 @@
 package id.akademi.amanifo.registration.services.models;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
 import lombok.Builder;
 import lombok.Getter;
 
