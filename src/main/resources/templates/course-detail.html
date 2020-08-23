@@ -53,10 +53,15 @@
                         Pendaftaran Ditutup
                     </button>
                     <button id="btnAlreadyJoined" class="btn btn-block btn-lg btn-success" 
-                        th:style="${courseResult.isAlreadyJoined() ? '' : 'display: none'}" disabled>
+                        th:style="${courseResult.isAlreadyJoined() && courseResult.getDaysBeforeStartDate() > 0 ? '' : 'display: none'}" disabled>
                         <span class="fa fa-check" role="status" aria-hidden="true"></span>
                         Terdaftar
                     </button>
+                    <a th:href="@{${courseResult.getId() + '/start'}}" id="btnAlreadyJoined" class="btn btn-block btn-lg btn-danger" 
+                        th:if="${courseResult.isAlreadyJoined() && (courseResult.getDaysBeforeStartDate() == 0)}">
+                        <span class="fa fa-play-circle " role="status" aria-hidden="true"></span>
+                        Mulai Kelas
+                    </a>
                     <button id="btnJoinCourseLoading" class="btn btn-block btn-lg btn-primary" style="display: none" disabled>
                         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                         Loading ...
