@@ -80,4 +80,9 @@ $(function() {
         }
 		form.addClass('was-validated');
 	});
+	
+	$('#dob').datetimepicker({
+		format:'MMMM, DD YYYY',
+		locale:'id',
+	});
 });

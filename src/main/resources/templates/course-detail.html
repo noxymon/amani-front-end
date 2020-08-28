@@ -75,7 +75,7 @@
         </div>
         <div class="col-lg-9">
             <div class="card mt-4">
-                <img class="card-img-top img-fluid" src="https://lorempixel.com/900/400/abstract"
+                <img class="card-img-top img-fluid" th:src="@{'~/images/'+${courseResult.getCourseDetailImage()}}"
                      alt="">
                 <div class="card-body">
                     <h3 class="card-title" th:text="${courseResult.getCourseName()}"></h3>
