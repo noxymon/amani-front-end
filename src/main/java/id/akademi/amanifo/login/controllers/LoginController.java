@@ -27,10 +27,11 @@ public class LoginController
         @RequestParam(required = false, defaultValue = "false") String isLoginFailed,
         String failedLoginMessage, boolean redirect)
     {
+        final Boolean booleanLoginFailed = Boolean.valueOf(isLoginFailed);
         model.addAttribute("loginRequest", new LoginRequest())
-            .addAttribute("isLoginFailed", Boolean.valueOf(isLoginFailed))
-            .addAttribute("failedLoginMessage", failedLoginMessage);
-        return redirect ? "redirect:/login" : "login";
+             .addAttribute("isLoginFailed", booleanLoginFailed)
+             .addAttribute("failedLoginMessage", failedLoginMessage);
+        return redirect ? "redirect:/login?isLoginFailed="+ booleanLoginFailed +"&failedLoginMessage="+failedLoginMessage : "login";
     }
 
     @PostMapping("/login")
@@ -50,10 +51,7 @@ public class LoginController
 
     private String returnLoginAfterFailed(Model model, Throwable e)
     {
-        if (e instanceof HttpClientErrorException.Unauthorized) {
-            return showLogin(model, "true", "Username and Password Unknown", true);
-        }
-        return showLogin(model, "true", "Oops Something Happen !", true);
+        return showLogin(model, "true", "Periksa kembali username dan password kamu ya :)", true);
     }
 
     private MemberLoginParameter buildMemberLoginParameter(LoginRequest loginRequest)
