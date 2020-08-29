@@ -45,15 +45,15 @@
                     <h5 class="card-title"
                         th:text="'Tersisa ' + ${courseResult.getCapacity() - courseResult.getRegisteredCount()} + ' kursi lagi'"></h5>
                     <button id="btnJoinCourse" type="button" class="btn btn-block btn-lg btn-primary" 
-                        th:if="${courseResult.isOpenForRegistration()}">
+                        th:if="${courseResult.isOpenForRegistration() && !courseResult.isAlreadyJoined()}">
                         Join Course
                     </button>
                     <button id="btnClosedRegistration" type="button" class="btn btn-block btn-lg btn-secondary" 
                         th:if="${!courseResult.isOpenForRegistration() && !courseResult.isAlreadyJoined()}" disabled>
-                        Pendaftaran Ditutup
+                        Pendaftaran Sudah Ditutup
                     </button>
                     <button id="btnAlreadyJoined" class="btn btn-block btn-lg btn-success" 
-                        th:style="${courseResult.isAlreadyJoined() && courseResult.getDaysBeforeStartDate() > 0 ? '' : 'display: none'}" disabled>
+                        th:style="${courseResult.isAlreadyJoined() && courseResult.isAlreadyStart() ? '' : 'display: none'}" disabled>
                         <span class="fa fa-check" role="status" aria-hidden="true"></span>
                         Terdaftar
                     </button>

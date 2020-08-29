@@ -32,6 +32,7 @@ public class CourseResult
     private boolean   openForRegistration;
     private String    floorImage;
     private String    courseDetailImage;
+    private boolean   alreadyStart;
 
     public CourseResult(CourseResult other)
     {
