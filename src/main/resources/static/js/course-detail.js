@@ -17,6 +17,7 @@ $(function () {
             $("#btnAlreadyJoined").show();
         }).always(function () {
             endLoading();
+            window.location.reload(true);
         })
     });
 
