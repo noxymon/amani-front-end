@@ -48,6 +48,11 @@ public class FetchCoursesApi implements IFetchCourses
     {
         URI uri = buildUriWithPath("/" + id);
         CourseResult courseResult = restTemplate.getForObject(uri, CourseResult.class);
+        return composeRandomImage(courseResult);
+    }
+
+    private CourseResult composeRandomImage(CourseResult courseResult)
+    {
         courseResult.setCourseDetailImage(generateRandomDetailImage());
         courseResult.setFloorImage(generateFloorImage());
         return courseResult;
@@ -76,6 +81,7 @@ public class FetchCoursesApi implements IFetchCourses
     public CourseResult byIdAndMember(String courseId, String memberId)
     {
         URI uri = buildUriWithPath("/" + courseId + "/" + memberId);
-        return restTemplate.getForObject(uri, CourseResult.class);
+        CourseResult courseResult = restTemplate.getForObject(uri, CourseResult.class);
+        return composeRandomImage(courseResult);
     }
 }
