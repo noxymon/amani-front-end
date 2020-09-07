@@ -53,12 +53,12 @@
                         Pendaftaran Sudah Ditutup
                     </button>
                     <button id="btnAlreadyJoined" class="btn btn-block btn-lg btn-success" 
-                        th:style="${courseResult.isAlreadyJoined() && courseResult.isAlreadyStart() ? '' : 'display: none'}" disabled>
+                        th:style="${courseResult.isAlreadyJoined() && !courseResult.isAlreadyStart() ? '' : 'display: none'}" disabled>
                         <span class="fa fa-check" role="status" aria-hidden="true"></span>
                         Terdaftar
                     </button>
                     <a th:href="@{${courseResult.getId() + '/start'}}" id="btnStartCourse" class="btn btn-block btn-lg btn-danger"
-                        th:if="${courseResult.isAlreadyJoined() && (courseResult.getDaysBeforeStartDate() == 0)}">
+                        th:if="${courseResult.isAlreadyJoined() && courseResult.isAlreadyStart()}">
                         <span class="fa fa-play-circle " role="status" aria-hidden="true"></span>
                         Mulai Kelas
                     </a>

@@ -4,24 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.7.9/css/bootstrap.css" />
-    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.7.9/css/react-select.css" />
+    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.8.0/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.8.0/css/react-select.css" />
     <title>Inspiranesia - Kelas Untuk Semua</title>
 </head>
 <body>
-    <script defer src="https://source.zoom.us/1.7.9/lib/vendor/react.min.js"></script>
-    <script defer src="https://source.zoom.us/1.7.9/lib/vendor/react-dom.min.js"></script>
-    <script defer src="https://source.zoom.us/1.7.9/lib/vendor/redux.min.js"></script>
-    <script defer src="https://source.zoom.us/1.7.9/lib/vendor/redux-thunk.min.js"></script>
-    <script defer src="https://source.zoom.us/1.7.9/lib/vendor/jquery.min.js"></script>
-    <script defer src="https://source.zoom.us/1.7.9/lib/vendor/lodash.min.js"></script>
-    <script defer th:src="@{~/js/zoom-meeting-1.7.10.min.js}"></script>
+    <div id="zmmtg-root"></div>
+    <div th:replace="error-modal :: modal"></div>
+    <script defer th:src="@{~/js/react.min.js}"></script>
+    <script defer th:src="@{~/js/react-dom.min.js}"></script>
+    <script defer th:src="@{~/js/redux.min.js}"></script>
+    <script defer th:src="@{~/js/redux-thunk.min.js}"></script>
+    <script defer th:src="@{~/js/jquery.min.js}"></script>
+    <script defer th:src="@{~/js/lodash.min.js}"></script>
+    <script defer th:src="@{~/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+    <script defer th:src="@{~/js/zoom-meeting-1.8.0.min.js}"></script>
+    <script defer src="https://unpkg.com/@popperjs/core@2"></script>
     <script async th:inline="javascript">
         /*
             <![CDATA[*/
-                var meetingConfig = /*[[${meetingConfig}]]*/ '{}';
-            /*]]
-        */
+        var meetingConfig = /*[[${meetingConfig}]]*/ '{}';
+        /*]]
+    */
     </script>
     <script defer th:src="@{~/js/course-start.js}"></script>
 </body>

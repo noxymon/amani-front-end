@@ -74,6 +74,7 @@ public class CourseController {
         if(isOnStart(existing)){
             CourseResult newCourseResult = new CourseResult(existing);
             newCourseResult.setAlreadyStart(true);
+            return newCourseResult;
         }
         return existing;
     }
