@@ -3,7 +3,7 @@ $(function () {
         startLoading();
 
         if(loginResponse == null){
-            $(location).attr('href', "/login");
+            $(location).attr('href', "/login?prevUrl=/course/"+courseResult.id);
         }
 
         $.post({

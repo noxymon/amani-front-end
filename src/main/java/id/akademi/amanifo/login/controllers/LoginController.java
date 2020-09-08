@@ -24,18 +24,21 @@ public class LoginController
 
     @GetMapping("/login")
     public String showLogin(Model model,
-        @RequestParam(required = false, defaultValue = "false") String isLoginFailed,
-        String failedLoginMessage, boolean redirect)
+      @RequestParam(required = false, defaultValue = "false") String isLoginFailed,
+      String failedLoginMessage,
+      boolean redirect,
+      @RequestParam(required = false) String prevUrl)
     {
         final Boolean booleanLoginFailed = Boolean.valueOf(isLoginFailed);
         model.addAttribute("loginRequest", new LoginRequest())
              .addAttribute("isLoginFailed", booleanLoginFailed)
-             .addAttribute("failedLoginMessage", failedLoginMessage);
+             .addAttribute("failedLoginMessage", failedLoginMessage)
+             .addAttribute("previousUrl", prevUrl);
         return redirect ? "redirect:/login?isLoginFailed="+ booleanLoginFailed +"&failedLoginMessage="+failedLoginMessage : "login";
     }
 
     @PostMapping("/login")
-    public String doLogin(HttpSession httpSession, @ModelAttribute LoginRequest loginRequest)
+    public String doLogin(HttpSession httpSession, @ModelAttribute LoginRequest loginRequest, @RequestParam(required = false) String prevUrl)
     {
         try {
             MemberLoginParameter memberLoginParameter = buildMemberLoginParameter(loginRequest);
@@ -43,7 +46,7 @@ public class LoginController
             LoginResponse loginResponse = LoginResponse.from(memberLoginService.login(memberLoginParameter));
 
             httpSession.setAttribute("loginResponse", loginResponse);
-            return "redirect:/home";
+            return "redirect:"+prevUrl;
         } catch (RestClientException e) {
             return returnLoginAfterFailed(new BindingAwareModelMap(), e);
         }
@@ -51,7 +54,7 @@ public class LoginController
 
     private String returnLoginAfterFailed(Model model, Throwable e)
     {
-        return showLogin(model, "true", "Periksa kembali username dan password kamu ya :)", true);
+        return showLogin(model, "true", "Periksa kembali username dan password kamu ya :)", true, null);
     }
 
     private MemberLoginParameter buildMemberLoginParameter(LoginRequest loginRequest)
