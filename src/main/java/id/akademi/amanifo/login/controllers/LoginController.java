@@ -31,10 +31,12 @@ public class LoginController
       @RequestParam(required = false) String prevUrl)
     {
         final Boolean booleanLoginFailed = Boolean.valueOf(isLoginFailed);
+        final String loginUrlWithQueryParam = StringUtils.isEmpty(prevUrl) ? "/login" : "/login?prevUrl="+prevUrl;
+
         model.addAttribute("loginRequest", new LoginRequest())
              .addAttribute("isLoginFailed", booleanLoginFailed)
              .addAttribute("failedLoginMessage", failedLoginMessage)
-             .addAttribute("previousUrl", prevUrl);
+             .addAttribute("loginUrlWithQueryParam", loginUrlWithQueryParam);
         return redirect ? "redirect:/login?isLoginFailed="+ booleanLoginFailed +"&failedLoginMessage="+failedLoginMessage : "login";
     }
 
