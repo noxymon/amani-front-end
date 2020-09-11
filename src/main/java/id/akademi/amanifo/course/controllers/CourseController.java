@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Objects;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.mobile.device.Device;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +25,7 @@ public class CourseController {
     private final IFetchCourses fetchCourses;
 
     @GetMapping("/{id}")
-    public String showCourseDetail(Model model, HttpSession httpSession, @PathVariable String id)
+    public String showCourseDetail(Model model, HttpSession httpSession, Device device, @PathVariable String id)
     {
         LoginResponse loginResponse = (LoginResponse) httpSession.getAttribute("loginResponse");
         
@@ -38,6 +40,13 @@ public class CourseController {
             CourseResult courseDetailWithFlagOpen = flagCourseOpenForRegistration(courseDetailWithSession);
             CourseResult courseDetailWithStartFlag = flagCourseIfAlreadyStarted(courseDetailWithFlagOpen);
 
+            String courseStartUrl = courseDetailWithStartFlag.getId() + "/start";
+            if(device.isMobile() || device.isTablet()){
+                final String fullName = loginResponse.getFirstName() + " " + loginResponse.getLastName();
+                courseStartUrl = "zoomus://zoom.us/join?confno=" + courseDetailWithStartFlag.getMeetingId() + "&pwd=inspira"+"&zc=0&uname=" + fullName;
+            }
+
+            model.addAttribute("courseStartUrl", courseStartUrl);
             model.addAttribute("courseResult", courseDetailWithStartFlag);
             model.addAttribute("loginResponse", loginResponse);
         }

@@ -67,7 +67,7 @@
                         <span class="fa fa-check" role="status" aria-hidden="true"></span>
                         Terdaftar
                     </button>
-                    <a th:href="@{${courseResult.getId() + '/start'}}" id="btnStartCourse" class="btn btn-block btn-lg btn-danger"
+                    <a th:href="@{${courseStartUrl}}" id="btnStartCourse" class="btn btn-block btn-lg btn-danger"
                         th:if="${courseResult.isAlreadyJoined() && courseResult.isAlreadyStart()}">
                         <span class="fa fa-play-circle " role="status" aria-hidden="true"></span>
                         Mulai Kelas
