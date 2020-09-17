@@ -2,42 +2,40 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="origin-trial" content="ApAWM1M3AtYY5C4Ur5fnUKHZ1hfVUFl6cgphDwDSDMWM3Xgg0bunamunBT5OPPoSglKtdcz9PPrnf3Z33JG9+bedNfgAAAABreyJvcmlnaW4iOiJodHRwczovL2luc3BpcmFuZXNpYS5pZDo0NDMiLCJmZWF0dXJlIjoiV2ViQXNzZW1ibHlTaW1kIiwiZXhwaXJ5IjoxNjAzMzc1MjU4LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
+    <title th:text="${courseResult.getCourseName()}"></title>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.8.0/css/bootstrap.css" />
-    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.8.0/css/react-select.css" />
-    <script async th:inline="javascript">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,400;0,800;1,400&display=swap"
+          rel="stylesheet" media="print" onload="this.media='all'">
+    <link th:href="@{~/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{~/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{~/css/commons.css}" rel="stylesheet">
+    <script defer th:src="@{~/webjars/jquery/3.5.1/jquery.min.js}"></script>
+    <script defer th:src="@{~/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+    <script th:inline="javascript">
         /*
-            <![CDATA[*/
-        var meetingConfig = /*[[${meetingConfig}]]*/ '{}';
+        <![CDATA[*/
+        var courseResult = /*[[${courseResult}]]*/ '{}';
+        var courseStartUrl = /*[[${courseStartUrl}]]*/ '{}';
         /*]]
     */
     </script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116347823-3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-116347823-3');
-        gtag('set', {'user_id': "'"+meetingConfig.userEmail+"'"});
-    </script>
-    <title>Inspiranesia - Kelas Untuk Semua</title>
+    <script defer th:src="@{~/js/course-start.js}"></script>
 </head>
 <body>
-    <div id="zmmtg-root"></div>
-    <div th:replace="error-modal :: modal"></div>
-    <script defer th:src="@{~/js/react.min.js}"></script>
-    <script defer th:src="@{~/js/react-dom.min.js}"></script>
-    <script defer th:src="@{~/js/redux.min.js}"></script>
-    <script defer th:src="@{~/js/redux-thunk.min.js}"></script>
-    <script defer th:src="@{~/js/jquery.min.js}"></script>
-    <script defer th:src="@{~/js/lodash.min.js}"></script>
-    <script defer th:src="@{~/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
-    <script defer th:src="@{~/js/zoom-meeting-1.8.0.min.js}"></script>
-    <script defer src="https://unpkg.com/@popperjs/core@2"></script>
-    <script defer th:src="@{~/js/course-start.js}"></script>
+<div th:replace="navbar :: navbar"></div>
+<div class="container mt-5 mb-lg-5">
+    <div class="text-center">
+        <img th:src="@{~/images/student-with-laptop.svg}" width="40%"/>
+        <h1 class="font-weight-bold text-center">Semua Siap !</h1>
+    </div>
+    <div class="text-center">
+        <h1>Kelas anda akan berlangsung sesaat lagi :)</h1>
+        <p>Jika tidak, silahkan klik <a type="button" class="btn btn-primary" th:href="'/course/'+${courseResult.getId()} + '/start?useFallback=true'">disini</a></p>
+    </div>
+</div>
+<div th:replace="footer :: footer"></div>
+<div th:replace="fallback-modal :: modal"></div>
 </body>
 </html>

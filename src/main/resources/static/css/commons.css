@@ -1,0 +1,26 @@
+p,h1,h2,h3,h4 {
+    font-family: 'Raleway', sans-serif !important;
+}
+
+h4{
+    font-weight: 800;
+}
+
+html,body {
+    height: 100%;
+}
+
+body {
+    padding-top: 56px;
+}
+
+footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    position: absolute;
+    width: 100%;
+}
+
+footer p {
+    margin-bottom: .25rem;
+}

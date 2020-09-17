@@ -1,68 +1,20 @@
-$(function() {    
-    console.log("Starting Course ..............................................");
-    ZoomMtg.setZoomJSLib('/js/lib', '/av');
-    ZoomMtg.preLoadWasm();
-    ZoomMtg.prepareJssdk();
-    ZoomMtg.init({
-        debug: false,
-        isSupportAV: true,
-        disableInvite:true,
-        screenShare: false,
-        disableRecord:false,
-        showMeetingHeader:false,
-        meetingInfo: [
-            'topic',
-            'host'
-        ],
-        leaveUrl:meetingConfig.leaveUrl,
-        success: (success) => {
-            console.log(success)
+function moveToBottom(selector) {
+    $(selector).css("bottom", "0px");
+}
 
-            ZoomMtg.join({
-                meetingNumber:meetingConfig.meetingNumber,
-                signature:meetingConfig.signature,
-                passWord: meetingConfig.password,
-                apiKey:meetingConfig.apiKey,
-                userName:meetingConfig.username,
-                userEmail:meetingConfig.userEmail,
-                success: (success) => {
-                    console.log(success);
-                },
-                error: (error) => {
-                    console.log(error);
-                }
-            })
+$(function () {
+    moveToBottom("footer");
 
+    $(location).attr("href", courseStartUrl);
+    setTimeout(
+        function () {
+            $("#fallbackModal").modal('show');
         },
-        error: (error) => {
-            console.log(error)
-        }
-    })
+        10000
+    );
 
-    function styleMeeting() {
-        $("head style").remove();
-        $(".meeting-app").removeAttr("style");
-        $("#wc-footer").removeClass().removeAttr("style").addClass("navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark");
-
-        // move button
-        $(".send-video-container").detach().prependTo("#wc-footer");
-        $(".join-audio-container").detach().prependTo("#wc-footer");
-        $("#wc-footer-left").remove();
-        $(".send-video-container + div").hide();
-        $(".meeting-info-icon__icon-wrap").remove();
-
-        //restyle button
-        $(".join-audio-container button").addClass("btn btn-primary");
-        $(".send-video-container button").addClass("btn btn-warning");
-        $("button.footer__leave-btn").addClass("btn btn-danger float-right");
-    }
-
-    function removeMeetingInfo() {
-        $(".meeting-info-icon__icon-wrap").remove();
-    }
-
-    function checkRequirement(){
-        if(ZoomMtg.checkSystemRequirements().features.length == 8){
-        }
-    }
-})
+    $("#btnUseFallback").click(function () {
+        $("#fallbackModal").modal('hide');
+        $(location).attr('href', "/course/"+ courseResult.id + "/start?useFallback=true");
+    });
+});

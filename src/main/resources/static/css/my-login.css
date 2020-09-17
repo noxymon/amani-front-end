@@ -1,15 +1,3 @@
-html * {
-	font-family: 'Raleway', sans-serif !important;
-}
-
-h4{
-	font-weight: 800;
-}
-
-html,body {
-	height: 100%;
-}
-
 body.my-login-page {
 	background-color: #f7f9fb;
 	font-size: 14px;

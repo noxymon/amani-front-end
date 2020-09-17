@@ -33,6 +33,7 @@ public class CourseResult
     private String    floorImage;
     private String    courseDetailImage;
     private boolean   alreadyStart;
+    private String passcode;
 
     public CourseResult(CourseResult other)
     {

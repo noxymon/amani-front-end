@@ -21,6 +21,10 @@ $(function () {
         })
     });
 
+    $("#btnStartCourse").click(function () {
+
+    })
+
     function startLoading() {
         $("#btnJoinCourse").hide();
         $("#btnJoinCourseLoading").show();
