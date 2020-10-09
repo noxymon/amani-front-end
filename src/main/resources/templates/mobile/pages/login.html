@@ -1,0 +1,110 @@
+<div class="page" data-name="settings">
+    <div class="navbar">
+        <div class="navbar-bg"></div>
+        <div class="navbar-inner sliding">
+            <div class="title">Masuk</div>
+            <div class="right">
+                <a href="#" class="link popup-open" data-popup="#registerForm">Daftar</a>
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="list">
+            <ul>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">Username</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="username" placeholder="Your username">
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">Password</div>
+                        <div class="item-input-wrap">
+                            <input type="password" name="password" placeholder="Your password">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="block">
+            <a id="btnLogin" href="#" class="button button-large button-fill button-raised button-login">Login</a>
+        </div>
+    </div>
+
+    <div class="popup" id="registerForm">
+        <div class="view">
+            <div class="page">
+                <div class="navbar">
+                    <div class="navbar-bg"></div>
+                    <div class="navbar-inner">
+                        <div class="title">Daftar</div>
+                        <div class="right">
+                            <a href="#" class="link popup-close">Tutup</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-content">
+                    <div class="list no-hairlines-md">
+                        <ul>
+                            <li>
+                                <div class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label">Name</div>
+                                        <div class="item-input-wrap">
+                                            <input type="text" placeholder="Your name"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label">E-mail</div>
+                                        <div class="item-input-wrap">
+                                            <input type="email" placeholder="E-mail"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label">Password</div>
+                                        <div class="item-input-wrap">
+                                            <input type="password" placeholder="Password"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="item-link smart-select smart-select-init" data-open-in="sheet">
+                                    <select name="gender">
+                                        <option value="Perempuan" selected>Perempuan</option>
+                                        <option value="laki-laki">Laki-laki</option>
+                                    </select>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title">Gender</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-input-wrap">
+                                            <input type="text" placeholder="Your birth date" readonly="readonly" id="birthDate"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

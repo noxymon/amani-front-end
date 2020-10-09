@@ -1,0 +1,52 @@
+<template>
+    <div class="page" data-name="product">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Back</span>
+                    </a>
+                </div>
+        <div class="title">{{product.title}}</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <img src="https://cdn.framework7.io/placeholder/nature-1000x600-3.jpg"
+                 style="max-width: 100%; height: auto;">
+            <div class="demo-card-header-pic card" style="margin-top: -4em;">
+                <div class="no-border card-header"><strong>Deskripsi Kursus</strong></div>
+                <div class="card-content card-content-padding"><p>{{product.description}}</p></div>
+            </div>
+            <div class="demo-card-header-pic card card-outline">
+                <div class="no-border card-header"><strong>Outline Kursus</strong></div>
+                <div class="card-content card-content-padding">
+                    <div class="list">
+                        <ul>
+                            {{#each product.outline}}
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-media"><i class="f7-icons">checkmark_alt</i></div>
+                                        <div class="item-inner">
+                                            <div class="item-title">{{text}}</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+          <div class="text-align-center card card-outline"><div class="no-border card-header">
+              <strong>Instruktur</strong>
+          </div>
+              <img src="https://randomuser.me/api/portraits/lego/5.jpg" style="border-radius: 50%; max-width: 8em; height: auto;">
+              <div class="card-content card-content-padding">{{product.instrukturProfile}}</div>
+          </div>
+          <div class="block">
+              <a class="button button-fill button-large" href="#">Gabung</a>
+          </div>
+        </div>
+    </div>
+</template>

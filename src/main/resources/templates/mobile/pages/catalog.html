@@ -1,0 +1,29 @@
+<template>
+    <div class="page" data-name="catalog">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="title">Jadwal Saya</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="row margin-top">
+                {{#each products}}
+                    <div class="col-100 medium-33">
+                        <div class="card margin-right margin-left">
+                            <div class="card-header card-course-header"
+                                 style="background-image:url({{bannerUrl}})"></div>
+                            <div class="card-content card-content-padding">
+                                <p>{{description}}</p>
+                            </div>
+                            <div class="card-footer">
+                                <p class="date">{{startDate}}</p>
+                                <a class="button button-raised button-fill color-red">Mulai</a>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>

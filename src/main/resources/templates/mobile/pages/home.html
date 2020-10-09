@@ -1,0 +1,49 @@
+<template>
+    <div class="page" data-name="home">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner">
+                <div class="title sliding">inspiranesia</div>
+                <div class="right">
+                    <a href="#" class="link icon-only panel-open" data-panel="right">
+                        <i class="f7-icons">person_crop_circle</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="50" class="swiper-container swiper-init margin"
+                 style="border-radius: 20px">
+                <div class="swiper-pagination"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="/assets/images/1.png" style="width: 100%; height: auto; max-width:800px;"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/assets/images/2.png" style="width: 100%; height: auto; max-width:800px;"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/assets/images/3.png" style="width: 100%; height: auto;max-width:800px;"/>
+                    </div>
+                </div>
+            </div>
+            <div class="margin-horizontal"><h2 class="no-margin-vertical" style="font-weight: bold">Kelas</h2></div>
+            <div class="row">
+                {{#each products}}
+                    <div class="col-100 medium-33">
+                        <div class="card margin-horizontal">
+                            <div class="card-header card-course-header" style="background-image:url({{bannerUrl}});"></div>
+                            <div class="card-content card-content-padding">
+                                <p>{{description}}</p>
+                            </div>
+                            <div class="card-footer">
+                                <p class="date">{{startDate}}</p>
+                                <a href="/course/{{id}}/" class="button button-raised button-fill">Lihat</a>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>
