@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="origin-trial" content="ApAWM1M3AtYY5C4Ur5fnUKHZ1hfVUFl6cgphDwDSDMWM3Xgg0bunamunBT5OPPoSglKtdcz9PPrnf3Z33JG9+bedNfgAAAABreyJvcmlnaW4iOiJodHRwczovL2luc3BpcmFuZXNpYS5pZDo0NDMiLCJmZWF0dXJlIjoiV2ViQXNzZW1ibHlTaW1kIiwiZXhwaXJ5IjoxNjAzMzc1MjU4LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
+    <meta http-equiv="origin-trial"
+          content="AgEv9TngBU+saVhafPA9Z1+6IpCCXCKi1EGlqCYo283ye60kFvol2fF/PINTmSDs78YylIMm2I9eHjZphUHmEgkAAABreyJvcmlnaW4iOiJodHRwczovL2luc3BpcmFuZXNpYS5pZDo0NDMiLCJmZWF0dXJlIjoiV2ViQXNzZW1ibHlTaW1kIiwiZXhwaXJ5IjoxNjA3NTY2Mzc3LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.8.0/css/bootstrap.css" />
-    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.8.0/css/react-select.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{~/css/bootstrap.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{~/css/react-select.css}"/>
     <script async th:inline="javascript">
         /*
             <![CDATA[*/
@@ -18,38 +19,53 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116347823-3"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-116347823-3');
-        gtag('set', {'user_id': "'"+meetingConfig.userEmail+"'"});
+        gtag('set', {'user_id': "'" + meetingConfig.userEmail + "'"});
     </script>
     <!-- Google Tag Manager -->
     <script>
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-K7Q7BWJ');
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-K7Q7BWJ');
     </script>
     <!-- End Google Tag Manager -->
     <title>Inspiranesia - Kelas Untuk Semua</title>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7Q7BWJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7Q7BWJ" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
-    <div id="zmmtg-root"></div>
-    <div th:replace="error-modal :: modal"></div>
-    <script defer th:src="@{~/js/react.min.js}"></script>
-    <script defer th:src="@{~/js/react-dom.min.js}"></script>
-    <script defer th:src="@{~/js/redux.min.js}"></script>
-    <script defer th:src="@{~/js/redux-thunk.min.js}"></script>
-    <script defer th:src="@{~/js/jquery.min.js}"></script>
-    <script defer th:src="@{~/js/lodash.min.js}"></script>
-    <script defer th:src="@{~/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
-    <script defer th:src="@{~/js/zoom-meeting-1.8.0.min.js}"></script>
-    <script defer src="https://unpkg.com/@popperjs/core@2"></script>
-    <script defer th:src="@{~/js/fallback.js}"></script>
+<div id="zmmtg-root"></div>
+<div th:replace="error-modal :: modal"></div>
+<script defer th:src="@{~/js/react.min.js}"></script>
+<script defer th:src="@{~/js/react-dom.min.js}"></script>
+<script defer th:src="@{~/js/redux.min.js}"></script>
+<script defer th:src="@{~/js/redux-thunk.min.js}"></script>
+<script defer th:src="@{~/js/jquery.min.js}"></script>
+<script defer th:src="@{~/js/lodash.min.js}"></script>
+<script defer th:src="@{~/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+<script defer th:src="@{~/js/zoomus-websdk.umd.min.js}"></script>
+<script defer src="https://unpkg.com/@popperjs/core@2"></script>
+<script defer th:src="@{~/js/fallback.js}"></script>
 </body>
 </html>
